@@ -1,14 +1,25 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require("path");
 
 module.exports = {
     entry: {
         backgroundPage: path.join(__dirname, "src/backgroundPage.ts"),
         popup: path.join(__dirname, "src/popup/index.tsx"),
+        content_script: path.join(__dirname, "src/content-script.ts"),
     },
     output: {
-        path: path.join(__dirname, "dist/js"),
-        filename: "[name].js",
+        path: path.join(__dirname, "dist"),
+        filename: "js/[name].js",
+        assetModuleFilename: 'images/[hash][ext][query]'
     },
+    plugins: [
+        new HtmlWebpackPlugin({
+            filename: 'popup.html',
+            template: 'src/assets/popup.html',
+            chunks: ['popup'],
+            hash: true
+        })
+    ],
     module: {
         rules: [
             {
@@ -30,6 +41,10 @@ module.exports = {
                         loader: "sass-loader", // Compiles Sass to CSS
                     },
                 ],
+            },
+            {
+                test: /\.png$/i,
+                type: 'asset/resource',
             },
         ],
     },

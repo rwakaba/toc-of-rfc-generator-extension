@@ -29,7 +29,7 @@ In [Google Chrome](https://www.google.com/chrome/), open up [chrome://extensions
 </details>
 
 ## Notes
-This extention is built on wonderful web extension starter project. Thanks to [react-typescript-web-extension-starter](https://github.com/aeksco/react-typescript-web-extension-starter)
+This extention is built on a wonderful web extension starter project. Thanks to [react-typescript-web-extension-starter](https://github.com/aeksco/react-typescript-web-extension-starter)
 
 **Misc. References**
 

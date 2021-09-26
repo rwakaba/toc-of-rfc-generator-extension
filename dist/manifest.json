@@ -1,14 +1,17 @@
 {
-    "manifest_version": 1,
+    "manifest_version": 2,
     "name": "TOC of RFC Generator",
     "description": "An Extension generate table of contents for any rfc pages",
     "version": "1.0.0",
-    "browser_action": {
+    "page_action": {
         "default_icon": "icon-48.png",
+        "default_title": "test",
         "default_popup": "popup.html"
     },
     "background": {
-        "scripts": ["js/backgroundPage.js"],
+        "scripts": [
+            "js/backgroundPage.js"
+        ],
         "persistent": false
     },
     "icons": {
@@ -16,5 +19,12 @@
         "48": "icon-48.png",
         "128": "icon-128.png"
     },
-    "permissions": ["tabs", "activeTab", "notifications", "http://*/", "https://*/"]
+    "permissions": [
+        "tabs",
+        "activeTab",
+        "notifications",
+        "http://*/",
+        "https://*/",
+        "declarativeContent"
+    ]
 }

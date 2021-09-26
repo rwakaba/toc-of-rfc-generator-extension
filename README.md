@@ -1,5 +1,5 @@
 
-:desktop_computer: An Extension generate table of contents for any rfc pages
+:desktop_computer: An Chrome Extension generates table of contents for any rfc pages
 
 https://github.com/aeksco/react-typescript-web-extension-starter
 

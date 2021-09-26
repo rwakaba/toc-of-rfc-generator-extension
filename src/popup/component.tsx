@@ -7,10 +7,6 @@ import "./styles.scss";
 import { Section } from "@src/types"
 import { parse } from "@src/parseSection"
 
-import img from '../assets/icon-16.png'
-
-console.log({ img })
-
 export const Popup: FunctionComponent = () => {
     const [title, setTitle] = React.useState<string>()
     const [sections, setSections] = React.useState<Section[]>()
@@ -26,10 +22,10 @@ export const Popup: FunctionComponent = () => {
                 setSections(parse(atagInfos))
             }
         });
-        browser.tabs.executeScript({file: "js/content_script.js"})
+        browser.tabs.executeScript({ file: "js/content_script.js" })
     }, []);
 
-    const executeScript = (href: string): void  => {
+    const executeScript = (href: string): void => {
         // Query for the active tab in the current window
         browser.tabs
             .query({ active: true, currentWindow: true })
@@ -64,11 +60,11 @@ export const Popup: FunctionComponent = () => {
     const sectionToTreeItem = (section: Section) => {
         if (section.children.length) {
             return (
-            <TreeItem nodeId={nodeId(section)} label={section.title} key={nodeId(section)}>
-                {section.children.map(child => (sectionToTreeItem(child)))}
-            </TreeItem>)
+                <TreeItem nodeId={nodeId(section)} label={section.title} key={nodeId(section)}>
+                    {section.children.map(child => (sectionToTreeItem(child)))}
+                </TreeItem>)
         } else {
-            return (<TreeItem nodeId={nodeId(section)} label={section.title} onClick={() => executeScript(section.href)} key={nodeId(section)}/>)
+            return (<TreeItem nodeId={nodeId(section)} label={section.title} onClick={() => executeScript(section.href)} key={nodeId(section)} />)
         }
     }
     return (
@@ -81,11 +77,11 @@ export const Popup: FunctionComponent = () => {
                     defaultExpandIcon={<ChevronRight />}
                     sx={{ height: 300, flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
                 >
-                {sections && sections.map(section => {
-                    return (
-                        sectionToTreeItem(section)
-                    )
-                })}
+                    {sections && sections.map(section => {
+                        return (
+                            sectionToTreeItem(section)
+                        )
+                    })}
                 </TreeView>
             </div>
         </div>
